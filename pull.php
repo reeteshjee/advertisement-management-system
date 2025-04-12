@@ -3,16 +3,16 @@
 $data = file_get_contents('php://input');
 
 $json = json_decode($data, true);
-echo $json;
+pullFromGitHub();
 
 
 // Check the event type (push event in this case)
-if (isset($json['ref']) && $json['ref'] == 'refs/heads/main') {
+/*if (isset($json['ref']) && $json['ref'] == 'refs/heads/main') {
     pullFromGitHub();
 }else{
-	
+
 	echo 'invalid request';
-}
+}*/
 exit;
 
 
