@@ -109,9 +109,16 @@ if (isset($_POST['delete'])) {
                                                     class="text-gray-500 hover:text-gray-700">
                                                 <i class="fas fa-copy"></i>
                                             </button>
+                                            <?php
+                                                if($ad['status']==1){
+                                                    $onoff_class = "fa-toggle-off";
+                                                }else{
+                                                    $onoff_class = "fa-toggle-on";
+                                                }
+                                            ?>
                                             <button type="submit" name="toggle_status" 
                                                     class="text-indigo-600 hover:text-indigo-900">
-                                                <i class="fas fa-toggle-on"></i>
+                                                <i class="fas <?php echo $onoff_class;?>"></i>
                                             </button>
                                             <button type="submit" name="delete" 
                                                     onclick="return confirm('Delete this ad?');"
