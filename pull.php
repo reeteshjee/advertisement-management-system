@@ -1,18 +1,15 @@
 <?php
 // Process the incoming POST data
 $data = file_get_contents('php://input');
-file_put_contents('uploads/a.json',$data);
 $json = json_decode($data, true);
 
+    file_put_contents('uploads/test.json',json_encode($json));
 
 
 // Check the event type (push event in this case)
 if (isset($json['ref']) && $json['ref'] == 'refs/heads/main') {
-    file_put_contents('uploads/b.json','a');
-
     pullFromGitHub();
 }else{
-    file_put_contents('uploads/c.json','a');
 	echo 'invalid request';
 }
 exit;
