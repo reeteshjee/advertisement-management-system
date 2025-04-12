@@ -103,7 +103,7 @@ if (isset($_POST['delete'])) {
                                         <form method="POST" class="inline-flex space-x-2">
                                             <input type="hidden" name="id" value="<?= $ad['id'] ?>">
                                             <input type="hidden" name="status" value="<?= $ad['status'] ?>">
-                                            <input type="hidden" value='<script src="<?php echo BASE_URL;?>sponsored?id=<?= $ad['id'] ?>" async></script>' 
+                                            <input type="hidden" value='<script src="<?php echo BASE_URL;?>sponsored?id=<?= $ad['slug'] ?>" async></script>' 
                                                class="text-sm border rounded px-2 py-1 w-48" readonly>
                                             <button onclick="navigator.clipboard.writeText(this.previousElementSibling.value)" 
                                                     class="text-gray-500 hover:text-gray-700">

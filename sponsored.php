@@ -9,10 +9,10 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$id = (int)$_GET['id'];
+$id = $_GET['id'];
 
 // Fetch the ad
-$stmt = $db->prepare("SELECT * FROM ads WHERE id = ? AND status = 1 AND display_from <= ? AND display_to >= ?");
+$stmt = $db->prepare("SELECT * FROM ads WHERE slug = ? AND status = 1 AND display_from <= ? AND display_to >= ?");
 $today = date('Y-m-d'); // Get today's date
 $stmt->execute([$id, $today, $today]);
 $ad = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ $image = BASE_URL.$image;
 // Increment impressions
 $success = $db->prepare("UPDATE ads SET impressions = impressions + 1 WHERE id = ?")->execute([$id]);
 
-
+$base_url = BASE_URL;
 // Output JavaScript code to insert the ad dynamically
 echo "
 (function() {
@@ -38,7 +38,7 @@ echo "
     adContainer.style.margin = '10px 0';
 
     var adLink = document.createElement('a');
-    adLink.href = 'https://sponsored.youthsforum.com/click?id={$id}';
+    adLink.href = '{$base_url}click?id={$id}';
     adLink.target = '_blank';
    
     var adImage = document.createElement('img');

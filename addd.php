@@ -1,6 +1,23 @@
 <?php
 require 'db.php';
 checkLogin();
+
+function generateSlug($length = 30) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
+}
+
+
+
+
+
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $stmt = $db->prepare("SELECT * FROM ads WHERE id = ?");
@@ -45,8 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $db->prepare("UPDATE ads SET name = ?, desktop_image = ?, mobile_image = ?, link = ?, display_from = ?, display_to = ? WHERE id = ?");
         $stmt->execute([$name, $desktop_image, $mobile_image, $link, $display_from, $display_to,$id]);
     }else{
-        $stmt = $db->prepare("INSERT INTO ads (user_id,name,desktop_image, mobile_image, link, display_from, display_to, status) VALUES (?, ?, ?, ?, ?, ?, ?, 1)");
-        $stmt->execute([$user_id, $name, $desktop_image, $mobile_image, $link, $display_from, $display_to]);
+        $slug = generateSlug();
+        $stmt = $db->prepare("INSERT INTO ads (slug,user_id,name,desktop_image, mobile_image, link, display_from, display_to, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)");
+        $stmt->execute([$slug, $user_id, $name, $desktop_image, $mobile_image, $link, $display_from, $display_to]);
+        echo interpolateQuery($query, $params);
     }
     header('location:add');
 }
