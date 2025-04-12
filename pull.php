@@ -13,7 +13,7 @@ exit;
 
 function pullFromGitHub(){
 
-	$repoDirectory = '/home/reeteshg/sponsored';
+	$repoDirectory = '/home/reeteshg/sponsored.youthsforum.com';
 
 	// Your GitHub personal access token (PAT)
 	$githubToken = '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';  // Replace with your actual GitHub token

@@ -115,7 +115,7 @@ $twitterAuthURL = $twitteroauth->url(
     <div class="container">
         <div class="login-container">
             <div class="login-header">
-                <h2>Welcome1</h2>
+                <h2>Welcome11</h2>
                 <p>Choose your preferred login method</p>
             </div>
             
