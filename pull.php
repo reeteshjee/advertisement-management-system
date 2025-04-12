@@ -14,6 +14,7 @@ if (isset($json['ref']) && $json['ref'] == 'refs/heads/main') {
 }
 exit;
 
+
 function pullFromGitHub(){
 
 	$repoDirectory = '/home/reeteshg/sponsored.youthsforum.com';
