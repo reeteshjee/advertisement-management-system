@@ -1,9 +1,9 @@
 <?php
 // Process the incoming POST data
 $data = file_get_contents('php://input');
+var_dump($data);
 $json = json_decode($data, true);
-
-    file_put_contents('uploads/test.json',json_encode($json));
+echo $json;
 
 
 // Check the event type (push event in this case)
