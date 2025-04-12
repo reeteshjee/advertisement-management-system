@@ -1,7 +1,7 @@
 <?php
 // Process the incoming POST data
 $data = file_get_contents('php://input');
-var_dump($data);
+
 $json = json_decode($data, true);
 echo $json;
 
