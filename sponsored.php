@@ -27,7 +27,7 @@ $image = $isMobile ? $ad['mobile_image'] : $ad['desktop_image'];
 $image = BASE_URL.$image;
 
 // Increment impressions
-$success = $db->prepare("UPDATE ads SET impressions = impressions + 1 WHERE id = ?")->execute([$id]);
+$success = $db->prepare("UPDATE ads SET impressions = impressions + 1 WHERE slug = ?")->execute([$id]);
 
 $base_url = BASE_URL;
 // Output JavaScript code to insert the ad dynamically
