@@ -111,9 +111,9 @@ if (isset($_POST['delete'])) {
                                             </button>
                                             <?php
                                                 if($ad['status']==1){
-                                                    $onoff_class = "fa-toggle-off";
-                                                }else{
                                                     $onoff_class = "fa-toggle-on";
+                                                }else{
+                                                    $onoff_class = "fa-toggle-off";
                                                 }
                                             ?>
                                             <button type="submit" name="toggle_status" 
