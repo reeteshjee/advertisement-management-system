@@ -37,6 +37,8 @@ if (isset($_POST['delete'])) {
     <title>Ad Management</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.png">
+
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen">
@@ -106,7 +108,7 @@ if (isset($_POST['delete'])) {
                                             <input type="hidden" value='<script src="<?php echo BASE_URL;?>sponsored?id=<?= $ad['slug'] ?>" async></script>' 
                                                class="text-sm border rounded px-2 py-1 w-48" readonly>
                                             <button onclick="navigator.clipboard.writeText(this.previousElementSibling.value)" 
-                                                    class="text-gray-500 hover:text-gray-700">
+                                                    class="text-gray-500 hover:text-gray-700 text-xl">
                                                 <i class="fas fa-copy"></i>
                                             </button>
                                             <?php
@@ -117,17 +119,17 @@ if (isset($_POST['delete'])) {
                                                 }
                                             ?>
                                             <button type="submit" name="toggle_status" 
-                                                    class="text-indigo-600 hover:text-indigo-900">
+                                                    class="text-indigo-600 hover:text-indigo-900 text-xl">
                                                 <i class="fas <?php echo $onoff_class;?>"></i>
                                             </button>
                                             <button type="submit" name="delete" 
                                                     onclick="return confirm('Delete this ad?');"
-                                                    class="text-red-600 hover:text-red-900">
+                                                    class="text-red-600 hover:text-red-900 text-xl">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
                                         <a href="add?id=<?= $ad['id'] ?>" 
-                                           class="text-green-600 hover:text-green-900">
+                                           class="text-green-600 hover:text-green-900 text-xl">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </div>

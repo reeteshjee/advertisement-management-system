@@ -37,99 +37,222 @@ $twitterAuthURL = $twitteroauth->url(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>AdFlow - Next-Gen Ad Management</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.png">
+
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        .login-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 400px;
+
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: #1e293b;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            padding: 6rem 5%;
+            text-align: center;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        .login-header {
-            text-align: center;
-            margin-bottom: 40px;
+
+        h1 {
+            font-size: 3.5rem;
+            color: #f8fafc;
+            margin-bottom: 1.5rem;
         }
-        .login-header h2 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 15px;
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .login-header p {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 0;
+
+        .login-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
         }
-        .social-login .btn {
-            margin: 12px 0;
-            padding: 12px 20px;
-            font-size: 16px;
+
+        .login-button {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .social-login .btn:hover {
+
+        .login-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
-        .social-login .btn i {
-            margin-right: 12px;
-            font-size: 20px;
+
+        .google-login {
+            background: #fff;
+            color: #333;
+            border: 1px solid #ddd;
         }
-        .btn-google {
-            background-color: #DB4437;
-            color: #fff;
-            border: 2px solid #ddd;
-        }
-        .btn-google:hover {
-            background-color: #DB4437;
-            color: #fff;
-            border: 2px solid #ddd;
-        }
-        .btn-twitter {
-            background-color: #1DA1F2;
+
+        .twitter-login {
+            background: #1DA1F2;
             color: white;
-            border: none;
         }
-        .btn-twitter:hover {
-            background-color: #1DA1F2;
-            color: white;
-            border: none;
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: #f8fafc;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-text {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #1e293b;
+            margin-top: 4rem;
+        }
+        .text-decoration-none{
+            text-decoration: none;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .d-flex{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .login-buttons {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="login-container">
-            <div class="login-header">
-                <h2>Welcome</h2>
-                <p>Choose your preferred login method</p>
-            </div>
-            
-            <div class="social-login">
-                <a href="<?php echo $googleAuthUrl;?>" class="btn btn-google w-100">
-                    <i class="fab fa-google"></i> Continue with Google
-                </a>
-                <a href="<?php echo $twitterAuthURL;?>" class="btn btn-twitter w-100">
-                    <i class="fab fa-twitter"></i> Continue with Twitter
-                </a>
-            </div>
-        </div>
-    </div>
+    <nav class="d-flex">
+        <div class="logo">AdFlow</div>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="hero">
+        <h1>Ad Management, Simplified</h1>
+        <p class="subtitle">
+            Effortlessly manage your ads, track performance, and optimize revenue in real-time. AdFlow is the future of ad management.
+        </p>
+        <div class="login-buttons">
+            <a href="<?php echo $googleAuthUrl;?>" class="text-decoration-none login-button google-login">
+                <i class="fab fa-google"></i>
+                Sign in with Google
+            </a>
+            <a href="<?php echo $twitterAuthURL;?>" class="text-decoration-none login-button twitter-login">
+                <i class="fab fa-twitter"></i>
+                Sign in with Twitter
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-bolt feature-icon"></i>
+            <h3 class="feature-title">Instant Ad Updates</h3>
+            <p class="feature-text">Modify your ads instantly without changing your website's code.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h3 class="feature-title">Real-time Analytics</h3>
+            <p class="feature-text">Track impressions, clicks, and revenue with powerful insights.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-alt feature-icon"></i>
+            <h3 class="feature-title">Secure & Reliable</h3>
+            <p class="feature-text">Enterprise-grade security ensures your data stays protected.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AdFlow. All rights reserved.</p>
+    </footer>
 </body>
 </html>
