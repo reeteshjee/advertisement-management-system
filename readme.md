@@ -151,3 +151,4 @@ If you encounter issues with the system:
 2. Verify database connection settings and facebook/twitter/google credentials in `db.php`
 3. Ensure all required PHP extensions are enabled
 4. Check the web server error logs for any PHP errors
+
